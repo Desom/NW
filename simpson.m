@@ -9,8 +9,11 @@ end
 
 I = 0;
 for i=1:n
-    mid = (se(i) + se(i+1))/2;
-    I = I + ((se(i+1) - se(i)) / 6) * (f(se(i)) + 4 * f(mid) + f(se(i+1)));
+    start = se(i);
+    final = se(i+1);
+    mid = (start + final)/2;
+    
+    I = I + ((final - start) / 6) * (f(start) + 4 * f(mid) + f(final));
 end
 
 end
