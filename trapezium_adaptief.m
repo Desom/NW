@@ -2,6 +2,8 @@ function [ I ] = trapezium_adaptief( f, a, b, e )
 
 fprintf('1');
 
+[a, b] = checkInfinite(f,a,b);
+
 I1 = trapezium(f,a,b,1);
 I2 = trapezium(f,a,b,2);
 
@@ -12,3 +14,4 @@ else
 
 end
 
+end
