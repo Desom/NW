@@ -40,3 +40,24 @@ semilogy(h2,simpson_integratie_fout2)
 
 %% 1.2 Adaptieve routine
 
+ewaarden = zeros(1,14);
+for i=1:14
+    ewaarden(i) = 10^(-i);
+end
+
+a = -5;
+b = 5;
+
+trapezium_tijden = zeros(1,14);
+simpson_tijden = zeros(1,14);
+quad_tijden = zeros(1,14);
+
+for i=1:14
+    trapezium_tijden(i) = calculateTime(@trapezium_adaptief, @func2, a, b, ewaarden(i));
+    simpson_tijden(i) = calculateTime(@simpson_adaptief, @func2, a, b, ewaarden(i));
+    quad_tijden(i) = calculateTime(@quad, @func2, a, b, ewaarden(i));
+end
+
+semilogx(ewaarden,trapezium_tijden)
+semilogx(ewaarden,simpson_tijden)
+semilogx(ewaarden,quad_tijden)
