@@ -1,0 +1,9 @@
+n = 20;
+[A, b] = stelsel_monomiaal(@func1, n);
+
+a = zeros(1,n);
+for i=1:n
+    a(i) = A(1:i,1:i)\b;
+end
+
+func = @(x) func1(x) - polyval(fliplr(a),x);
