@@ -7,17 +7,24 @@ trapezium_integratie_fout1 = zeros(1,100);
 simpson_integratie_fout1 = zeros(1,100);
 h1 = zeros(1,100);
 
-for n=1:100
-    trapezium_integratie_fout1(n) = abs(uitkomst1 - trapezium(@func1,-1,1,n * 100));
-    simpson_integratie_fout1(n) = abs(uitkomst1 - simpson(@func1,-1,1,n * 100));
-    h1(n) = 2 / n;
+for i=1:100
+    n = i * 100;
+    trapezium_integratie_fout1(i) = abs(uitkomst1 - trapezium(@func1,-1,1,n));
+    simpson_integratie_fout1(i) = abs(uitkomst1 - simpson(@func1,-1,1,n));
+    h1(i) = 2 / n;
 end
 
 figure(1)
 semilogy(h1,trapezium_integratie_fout1)
+title('Trapeziumregel, eerste functie')
+xlabel('h')
+ylabel('integratiefout')
 
 figure(2)
 semilogy(h1,simpson_integratie_fout1)
+title('Regel van Simpson, eerste functie')
+xlabel('h')
+ylabel('integratiefout')
 
 % Tweede functie
 uitkomst2 = 2 * atan(5);
@@ -26,17 +33,24 @@ trapezium_integratie_fout2 = zeros(1,100);
 simpson_integratie_fout2 = zeros(1,100);
 h2 = zeros(1,100);
 
-for n=1:100
-    trapezium_integratie_fout2(n) = abs(uitkomst2 - trapezium(@func2,-5,5,n * 100));
-    simpson_integratie_fout2(n) = abs(uitkomst2 - simpson(@func2,-5,5,n * 100));
-    h2(n) = 10 / n;
+for i=1:100
+    n = i * 100;
+    trapezium_integratie_fout2(i) = abs(uitkomst2 - trapezium(@func2,-5,5,n));
+    simpson_integratie_fout2(i) = abs(uitkomst2 - simpson(@func2,-5,5,n));
+    h2(i) = 10 / n;
 end
 
 figure(3)
 semilogy(h2,trapezium_integratie_fout2)
+title('Trapeziumregel, tweede functie')
+xlabel('h')
+ylabel('integratiefout')
 
 figure(4)
 semilogy(h2,simpson_integratie_fout2)
+title('Regel van Simpson, tweede functie')
+xlabel('h')
+ylabel('integratiefout')
 
 %% 1.2 Adaptieve routine
 
