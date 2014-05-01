@@ -1,8 +1,5 @@
 function [ I ] = trapezium_adaptief( f, a, b, e, counter)
 
-% TODO moet weg voor inleveren
-fprintf('1');
-
 if (nargin < 5)
     counter = 1;
 else

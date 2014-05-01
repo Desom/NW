@@ -11,6 +11,9 @@ for i=1:n
 end
 
 semilogy(e)
+title('||f - g||')
+xlabel('Graad')
+ylabel('e')
 
 %% Deel 2
 
@@ -34,9 +37,17 @@ end
 figure
 subplot(2,1,1)
 semilogy(e_b)
+title('Fouten op b en A')
+xlabel('Graad')
+ylabel('e')
 hold
 semilogy(e_A, 'r')
+legend('relatieve fout b', 'relatieve fout A', 'Location', 'SouthEast')
 subplot(2,1,2)
 semilogy(e_a)
+title('Fouten op a')
+xlabel('Graad')
+ylabel('e')
 hold
 semilogy(cond_A .* (1e-8), 'r')
+legend('relatieve fout a', '||A|| * tolerantie', 'Location', 'SouthEast')
