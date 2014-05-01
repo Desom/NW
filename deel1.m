@@ -98,13 +98,20 @@ fprintf('Functie 3: %e\n', rel_simp3)
 
 uitkomst4 = 2;
 
-rel_trap4 = abs(uitkomst4 - trapezium_adaptief_oud(@func4, 0, 1, 1e-8)) / uitkomst4;
-rel_simp4 = abs(uitkomst4 - simpson_adaptief_oud(@func4, 0, 1, 1e-8)) / uitkomst4;
-
-fprintf('\nRelatieve fout van de trapezium adaptief:\n')
-fprintf('Functie 4: %e\n', rel_trap4)
-fprintf('Relatieve fout van Simpson adaptief:\n')
-fprintf('Functie 4: %e\n', rel_simp4)
+try
+    rel_trap4 = abs(uitkomst4 - trapezium_adaptief_oud(@func4, 0, 1, 1e-8)) / uitkomst4;
+    fprintf('\nRelatieve fout van de trapezium adaptief:\n')
+    fprintf('Functie 4: %e\n', rel_trap4)
+catch err
+    fprintf('\nTrapezium adaptief caused an error.\n')
+end
+try
+    rel_simp4 = abs(uitkomst4 - simpson_adaptief_oud(@func4, 0, 1, 1e-8)) / uitkomst4;
+    fprintf('Relatieve fout van Simpson adaptief:\n')
+    fprintf('Functie 4: %e\n', rel_simp4)
+catch err
+    fprintf('Simpson adaptief caused an error.\n')
+end
 
 %% 1.2 (c) vervolg
 
